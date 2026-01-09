@@ -1,13 +1,16 @@
-import { Outlet } from "react-router-dom";
-import UserNavbar from "../components/navbar/UserNavbar";
+// layouts/UserLayout.jsx
+import { useAuth } from "../context/AuthContext";
+import GuestBanner from "../components/common/GuestBanner";
 
-export default function UserLayout() {
+export default function UserLayout({ children }) {
+  const { isGuest } = useAuth();
+  
   return (
-    <>
-      <UserNavbar />
-      <main className="min-h-screen">
-        <Outlet />
+    <div className="min-h-screen bg-gray-50 pt-16">
+      {isGuest() && <GuestBanner />}
+      <main className="container mx-auto px-4 py-8">
+        {children}
       </main>
-    </>
+    </div>
   );
 }

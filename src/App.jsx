@@ -1,17 +1,17 @@
+// App.jsx
 import { Routes, Route } from "react-router-dom";
-
-import Welcome from "./pages/Welcome";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
-import News from "./pages/News";
-import NewsDetail from "./pages/NewsDetail";
+import Admin from "./pages/Admin";
 
-import AdminLayout from "./layouts/AdminLayout";
-import UserLayout from "./layouts/UserLayout";
+import Layout from "./components/Layout";
+import AdminLayout from "./components/AdminLayout"; // BUAT INI
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminRoute from "./routes/AdminRoute";
 
-import AdminDashboard from "./pages/AdminDashboard";
-import AdminNews from "./pages/AdminNews";
-import AdminCreateNews from "./pages/AdminCreateNews";
-import AdminEditNews from "./pages/AdminEditNews";
+import Overview from "./pages/dashboard/Overview";
+import Profile from "./pages/dashboard/Profile";
+import Settings from "./pages/dashboard/Settings";
 
 import NotFound from "./pages/NotFound";
 
@@ -19,27 +19,36 @@ function App() {
   return (
     <Routes>
       {/* PUBLIC */}
-      <Route path="/" element={<Welcome />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
 
-      {/* USER */}
-      <Route element={<UserLayout />}>
-        <Route path="/news" element={<News />} />
-        <Route path="/news/:id" element={<NewsDetail />} />
+      {/* USER DASHBOARD */}
+      <Route
+        element={
+          <ProtectedRoute>
+            <Layout /> {/* USER LAYOUT */}
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/dashboard" element={<Overview />} />
+        <Route path="/dashboard/profile" element={<Profile />} />
+        <Route path="/dashboard/settings" element={<Settings />} />
       </Route>
 
-      {/* ADMIN */}
-      <Route element={<AdminLayout />}>
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/news" element={<AdminNews />} />
-        <Route path="/admin/news/create" element={<AdminCreateNews />} />
-        <Route path="/admin/news/edit/:id" element={<AdminEditNews />} />
+      {/* ADMIN DASHBOARD */}
+      <Route
+        element={
+          <AdminRoute>
+            <AdminLayout /> {/* ADMIN LAYOUT */}
+          </AdminRoute>
+        }
+      >
+        <Route path="/admin" element={<Admin />} />
       </Route>
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
-
   );
 }
 

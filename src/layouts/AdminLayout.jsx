@@ -1,13 +1,20 @@
-import { Outlet } from "react-router-dom";
-import AdminNavbar from "../components/navbar/AdminNavbar";
+// layouts/AdminLayout.jsx
+import { useAuth } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
 
-export default function AdminLayout() {
+export default function AdminLayout({ children }) {
+  const { isAdmin } = useAuth();
+
+  // Pastikan hanya admin yang bisa akses
+  if (!isAdmin()) {
+    return <Navigate to="/news" replace />;
+  }
+
   return (
-    <>
-      <AdminNavbar />
-      <main className="max-w-7xl mx-auto px-6 py-6 bg-gray-50 min-h-screen">
-        <Outlet />
+    <div className="min-h-screen bg-gray-50 pt-16">
+      <main className="container mx-auto px-4 py-8">
+        {children}
       </main>
-    </>
+    </div>
   );
 }
