@@ -1,4 +1,3 @@
-// components/navbar/Navbar.jsx
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import AdminNavbar from "./AdminNavbar";

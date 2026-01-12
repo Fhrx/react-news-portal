@@ -1,4 +1,3 @@
-// layouts/UserLayout.jsx
 import { useAuth } from "../context/AuthContext";
 import GuestBanner from "../components/common/GuestBanner";
 

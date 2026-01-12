@@ -1,4 +1,3 @@
-// components/navbar/UserNavbar.jsx
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { FaNewspaper, FaSignOutAlt, FaUser, FaHome } from "react-icons/fa";

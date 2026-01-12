@@ -1,4 +1,3 @@
-// components/common/GuestBanner.jsx
 import { useNavigate } from "react-router-dom";
 import { FaInfoCircle, FaSignInAlt } from "react-icons/fa";
 
