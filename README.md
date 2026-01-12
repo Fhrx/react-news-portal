@@ -113,7 +113,6 @@ pnpm dev
 |----|----|----|
 | Admin | admin | admin123 |
 | User | user | user123 |
-| Guest | guest | guest123 |
 
 ---
 
