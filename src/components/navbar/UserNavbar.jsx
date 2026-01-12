@@ -31,7 +31,7 @@ export default function UserNavbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div 
@@ -72,9 +72,7 @@ export default function UserNavbar() {
           <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
-                <span className="text-sm font-semibold text-blue-700">
-                  {user?.avatar || user?.name?.charAt(0) || "U"}
-                </span>
+                <FaUser className="w-4 h-4 text-blue-700" />
               </div>
               <div className="text-left">
                 <p className="text-sm font-medium text-gray-900">
@@ -134,9 +132,7 @@ export default function UserNavbar() {
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex items-center gap-3 px-4 py-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-semibold text-blue-700">
-                      {user?.avatar || user?.name?.charAt(0) || "G"}
-                    </span>
+                    <FaUser className="w-5 h-5 text-blue-700" />
                   </div>
                   <div className="flex-1">
                     <p className="font-medium text-gray-900">

@@ -1,54 +1,94 @@
-// App.jsx
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Navbar from "./components/navbar/Navbar";
+import './App.css';
+
+// Layouts - PASTIKAN IMPORT INI
+import AdminLayout from "./layouts/AdminLayout";
+import UserLayout from "./layouts/UserLayout";
+
+// Public Pages
+import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
-import Admin from "./pages/Admin";
-
-import Layout from "./components/Layout";
-import AdminLayout from "./components/AdminLayout"; // BUAT INI
-import ProtectedRoute from "./routes/ProtectedRoute";
-import AdminRoute from "./routes/AdminRoute";
-
-import Overview from "./pages/dashboard/Overview";
-import Profile from "./pages/dashboard/Profile";
-import Settings from "./pages/dashboard/Settings";
-
 import NotFound from "./pages/NotFound";
+
+// User Pages
+import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
+
+// Admin Pages
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminNews from "./pages/AdminNews";
+import AdminCreateNews from "./pages/AdminCreateNews";
+import AdminEditNews from "./pages/AdminEditNews";
 
 function App() {
   return (
-    <Routes>
-      {/* PUBLIC */}
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-
-      {/* USER DASHBOARD */}
-      <Route
-        element={
-          <ProtectedRoute>
-            <Layout /> {/* USER LAYOUT */}
-          </ProtectedRoute>
-        }
-      >
-        <Route path="/dashboard" element={<Overview />} />
-        <Route path="/dashboard/profile" element={<Profile />} />
-        <Route path="/dashboard/settings" element={<Settings />} />
-      </Route>
-
-      {/* ADMIN DASHBOARD */}
-      <Route
-        element={
-          <AdminRoute>
-            <AdminLayout /> {/* ADMIN LAYOUT */}
-          </AdminRoute>
-        }
-      >
-        <Route path="/admin" element={<Admin />} />
-      </Route>
-
-      {/* 404 */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <BrowserRouter>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<Login />} />
+          
+          {/* User Routes - PAKAI UserLayout */}
+          <Route 
+            path="/news" 
+            element={
+              <UserLayout>
+                <News />
+              </UserLayout>
+            } 
+          />
+          <Route 
+            path="/news/:id" 
+            element={
+              <UserLayout>
+                <NewsDetail />
+              </UserLayout>
+            } 
+          />
+          
+          {/* Admin Routes - PAKAI AdminLayout */}
+          <Route 
+            path="/admin" 
+            element={
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
+            } 
+          />
+          <Route 
+            path="/admin/news" 
+            element={
+              <AdminLayout>
+                <AdminNews />
+              </AdminLayout>
+            } 
+          />
+          <Route 
+            path="/admin/news/create" 
+            element={
+              <AdminLayout>
+                <AdminCreateNews />
+              </AdminLayout>
+            } 
+          />
+          <Route 
+            path="/admin/news/edit/:id" 
+            element={
+              <AdminLayout>
+                <AdminEditNews />
+              </AdminLayout>
+            } 
+          />
+          
+          {/* 404 - Not Found */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

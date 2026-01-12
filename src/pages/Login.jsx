@@ -22,7 +22,6 @@ export default function Login() {
   const navigate = useNavigate();
   const { login, quickLogin } = useAuth();
   
-  // State untuk UI saja
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -35,11 +34,9 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      // Panggil function dari AuthContext
       const result = login(email, password);
       
       if (result.success) {
-        // Redirect berdasarkan role
         if (result.user.role === "admin") {
           navigate("/admin");
         } else {
@@ -57,7 +54,6 @@ export default function Login() {
   };
 
   const handleQuickLogin = (role) => {
-    // Panggil function dari AuthContext
     const user = quickLogin(role);
     if (user) {
       if (user.role === "admin") {
@@ -69,7 +65,6 @@ export default function Login() {
   };
 
   const handleDemoLogin = (demoType) => {
-    // Isi form dengan demo credentials
     if (demoType === "admin") {
       setEmail("admin@newsportal.com");
       setPassword("admin123");
@@ -113,8 +108,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Left Panel - Welcome & Features */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 to-blue-800 p-12 flex-col justify-between">
+      {/* Left Panel - Full width background */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 to-blue-800 p-8 lg:p-12 xl:p-16 flex-col justify-between">
         <div>
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
@@ -153,9 +148,9 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Right Panel - Login Form */}
-      <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-        <div className="max-w-md mx-auto w-full">
+      {/* Right Panel - Full width content area */}
+      <div className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-8 xl:p-12 flex flex-col justify-center">
+        <div className="max-w-md w-full mx-auto">
           {/* Mobile Header */}
           <div className="lg:hidden flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">

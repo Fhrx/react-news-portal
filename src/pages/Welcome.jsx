@@ -16,10 +16,10 @@ import {
 
 const Welcome = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-      {/* Header */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex justify-between items-center mb-16">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 w-full overflow-x-hidden">
+      {/* Header - HAPUS max-w-6xl */}
+      <div className="w-full py-6">
+        <div className="flex justify-between items-center mb-16 mx-6">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-md">
               <FaNewspaper className="w-6 h-6 text-white" />
@@ -49,9 +49,9 @@ const Welcome = () => {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+      {/* Hero Section - HAPUS px-4 dan max-w-6xl */}
+      <div className="w-full">
+        <div className="mx-6">
           <div className="text-center mb-16">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-5 py-2 rounded-full text-sm font-semibold mb-8">
@@ -64,8 +64,8 @@ const Welcome = () => {
               React <span className="text-blue-600">News</span> Portal
             </h1>
 
-            {/* Description */}
-            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            {/* Description - HAPUS max-w-3xl */}
+            <p className="text-xl text-gray-600 mb-10 mx-6 leading-relaxed">
               Platform berita modern berbasis React dengan sistem role management untuk 
               Admin, User, dan Guest. Kelola dan nikmati berita dengan pengalaman terbaik.
             </p>
@@ -91,7 +91,7 @@ const Welcome = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <div className="grid md:grid-cols-3 gap-8 mb-20 mx-6">
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-md">
                 <FaUserShield className="w-8 h-8 text-white" />
@@ -166,7 +166,7 @@ const Welcome = () => {
           </div>
 
           {/* Tech Stack Section */}
-          <div className="mb-20">
+          <div className="mb-20 mx-6">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               Built With Modern Technologies
             </h2>
@@ -206,8 +206,8 @@ const Welcome = () => {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white mb-16 shadow-xl">
+          {/* Stats - HAPUS max-w-6xl */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white mb-16 shadow-xl mx-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-4xl font-bold mb-2">3</div>
@@ -230,13 +230,13 @@ const Welcome = () => {
         </div>
       </div>
 
-      {/* Bottom CTA */}
-      <div className="bg-gradient-to-br from-gray-50 to-white py-16 border-t border-gray-200">
-        <div className="container mx-auto px-4 text-center">
+      {/* Bottom CTA - HAPUS max-w-6xl dan px-4 */}
+      <div className="bg-gradient-to-br from-gray-50 to-white py-16 border-t border-gray-200 w-full">
+        <div className="mx-6 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 mb-8 text-lg mx-6">
             Join the modern news platform experience. Create, manage, and read news with ease.
           </p>
           <Link
@@ -249,9 +249,9 @@ const Welcome = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4">
+      {/* Footer - HAPUS max-w-6xl dan px-4 */}
+      <footer className="bg-gray-900 text-white py-8 w-full">
+        <div className="mx-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-3 mb-6 md:mb-0">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">

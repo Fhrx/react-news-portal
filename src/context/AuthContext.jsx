@@ -1,6 +1,6 @@
 // context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// HAPUS useNavigate dari sini!
 
 const AuthContext = createContext();
 
@@ -37,17 +37,15 @@ const mockUsers = [
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  // HAPUS const navigate = useNavigate();
 
   // Load user from localStorage on mount
   useEffect(() => {
     const savedUser = localStorage.getItem("newsportal_user");
     if (savedUser) {
       try {
-        const parsedUser = JSON.parse(savedUser);
-        setUser(parsedUser);
+        setUser(JSON.parse(savedUser));
       } catch (error) {
-        console.error("Error parsing user from localStorage:", error);
         localStorage.removeItem("newsportal_user");
       }
     }
@@ -72,7 +70,6 @@ export function AuthProvider({ children }) {
 
     // Normal login with credentials
     const foundUser = mockUsers.find(u => {
-      // Check by username, email, or quick access
       const isUsernameMatch = u.username === emailOrUsername;
       const isEmailMatch = u.email === emailOrUsername;
       const isPasswordMatch = u.password === password;
@@ -102,11 +99,24 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("newsportal_user");
-    navigate("/");
+    // HAPUS navigate("/");
+    // Redirect akan dilakukan di komponen yang menggunakan logout
   };
 
   const isAuthenticated = () => {
     return user !== null;
+  };
+
+  const isAdmin = () => {
+    return user?.role === "admin";
+  };
+
+  const isGuest = () => {
+    return user?.role === "guest";
+  };
+
+  const isRegularUser = () => {
+    return user?.role === "user";
   };
 
   const hasRole = (role) => {
@@ -117,7 +127,6 @@ export function AuthProvider({ children }) {
     return user;
   };
 
-  // Update user profile (for future features)
   const updateProfile = (updates) => {
     if (user) {
       const updatedUser = { ...user, ...updates };
@@ -128,34 +137,14 @@ export function AuthProvider({ children }) {
     return null;
   };
 
-  // Check if user can access admin features
-  const isAdmin = () => {
-    return user?.role === "admin";
-  };
-
-  // Check if user is guest (read-only)
-  const isGuest = () => {
-    return user?.role === "guest";
-  };
-
-  // Check if user is regular user
-  const isRegularUser = () => {
-    return user?.role === "user";
-  };
-
-  // Register new user (for future features)
   const register = (userData) => {
-    // In a real app, this would call an API
     const newUser = {
       id: mockUsers.length + 1,
       ...userData,
-      role: "user" // Default role for new registrations
+      role: "user"
     };
     
-    // Add to mock users (in real app, this would be saved to backend)
     mockUsers.push(newUser);
-    
-    // Auto login after registration
     setUser(newUser);
     localStorage.setItem("newsportal_user", JSON.stringify(newUser));
     
@@ -171,12 +160,12 @@ export function AuthProvider({ children }) {
       logout,
       register,
       isAuthenticated,
-      hasRole,
-      getCurrentUser,
-      updateProfile,
       isAdmin,
       isGuest,
-      isRegularUser
+      isRegularUser,
+      hasRole,
+      getCurrentUser,
+      updateProfile
     }}>
       {children}
     </AuthContext.Provider>

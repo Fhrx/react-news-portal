@@ -9,7 +9,8 @@ import {
   FaPlusCircle,
   FaListAlt,
   FaBars,
-  FaTimes
+  FaTimes,
+  FaUser
 } from "react-icons/fa";
 import { useState } from "react";
 
@@ -49,7 +50,7 @@ export default function AdminNavbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div 
@@ -90,9 +91,7 @@ export default function AdminNavbar() {
           <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-white/30 to-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <span className="text-sm font-semibold">
-                  {user?.avatar || user?.name?.charAt(0) || "A"}
-                </span>
+                <FaUser className="w-4 h-4 text-white" />
               </div>
               <div className="text-left">
                 <p className="text-sm font-medium">{user?.name || "Administrator"}</p>
@@ -150,9 +149,7 @@ export default function AdminNavbar() {
               <div className="pt-4 border-t border-white/20">
                 <div className="flex items-center gap-3 px-4 py-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-white/30 to-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-sm font-semibold">
-                      {user?.avatar || user?.name?.charAt(0) || "A"}
-                    </span>
+                    <FaUser className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
                     <p className="font-medium">{user?.name || "Administrator"}</p>
