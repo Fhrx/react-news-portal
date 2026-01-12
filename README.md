@@ -1,16 +1,131 @@
-# React + Vite
+# 📰 React News Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React News Portal adalah **project frontend skala besar** yang dibuat untuk kebutuhan **submission magang / portfolio**, dengan simulasi portal berita modern yang memiliki **role Admin, User, dan Guest**.
 
-Currently, two official plugins are available:
+Project ini **fokus pada logic & flow frontend**, bukan sekadar UI, dengan penekanan pada:
+- Fetch & CRUD data
+- Role-based access
+- Protected routes
+- Search, filter, sort, dan pagination
+- Clean architecture & folder structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📸 Screenshots
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> Semua screenshot disimpan di folder `/screenshots`
 
-## Expanding the ESLint configuration
+### 🔹 Welcome Page
+![Welcome Page](./screenshots/welcome-page.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔹 Login Page
+![Login Page](./screenshots/login-page.png)
+
+### 🔹 News Listing (User / Guest)
+![News List](./screenshots/news-list.png)
+
+### 🔹 News Detail
+![News Detail](./screenshots/news-detail.png)
+
+### 🔹 Admin Dashboard
+![Admin Dashboard](./screenshots/admin-dashboard.png)
+
+### 🔹 Admin Manage News
+![Admin News](./screenshots/admin-news.png)
+
+### 🔹 Create News
+![Create News](./screenshots/admin-create-news.png)
+
+### 🔹 Edit News
+![Edit News](./screenshots/admin-edit-news.png)
+
+---
+
+## 🔗 Live Documentation
+📘 **Dokumentasi Project (Google Docs)**  
+👉 https://docs.google.com/document/d/16a18MqPaY4nLZFGogYr3cjOjmQ05l6cFb0PJ3RRQ3hc/edit?usp=sharing
+
+---
+
+## 🚀 Tech Stack
+
+- **React 18**
+- **Vite**
+- **React Router DOM v6**
+- **Tailwind CSS v3**
+- **LocalStorage (Mock API)**
+- **PNPM**
+
+---
+
+## 👥 User Roles
+
+### 🔑 Admin
+- CRUD berita
+- Admin Dashboard
+- Statistik berita
+- Manajemen konten penuh
+
+### 👤 User
+- Read berita
+- Search, filter, sort
+- Pagination
+- Detail berita
+
+### 👀 Guest
+- Read-only
+- Guest banner pembatasan fitur
+- Prompt login
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+├── components/
+├── pages/
+├── layouts/
+├── context/
+├── hooks/
+├── services/
+├── utils/
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/Fhrx/react-news-portal.git
+cd react-news-portal
+pnpm install
+pnpm dev
+```
+
+---
+
+## 🧪 Dummy Accounts
+
+| Role | Username | Password |
+|----|----|----|
+| Admin | admin | admin123 |
+| User | user | user123 |
+| Guest | guest | guest123 |
+
+---
+
+## 🎯 Project Goals
+- CRUD API
+- Search / Filter / Pagination
+- Role-based routing
+- Real-world frontend simulation
+
+---
+
+## ✨ Author
+**Fhrx**  
+Frontend Developer  
+Portfolio Project – Internship Submission
