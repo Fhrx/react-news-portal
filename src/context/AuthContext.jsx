@@ -1,6 +1,4 @@
-// context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
-// HAPUS useNavigate dari sini!
 
 const AuthContext = createContext();
 
@@ -37,7 +35,6 @@ const mockUsers = [
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // HAPUS const navigate = useNavigate();
 
   // Load user from localStorage on mount
   useEffect(() => {
@@ -99,8 +96,6 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("newsportal_user");
-    // HAPUS navigate("/");
-    // Redirect akan dilakukan di komponen yang menggunakan logout
   };
 
   const isAuthenticated = () => {
